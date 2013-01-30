@@ -60,7 +60,8 @@ module UtahAddress
         :input_address => input_address(response),
         :match_address => match_address(response),
         :latitude => latitude(response),
-        :longitude => longitude(response)
+        :longitude => longitude(response),
+        :spatial_reference_key => SETTINGS[:spatial_ref]
       }
     end
     
