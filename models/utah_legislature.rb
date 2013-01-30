@@ -57,7 +57,6 @@ module UtahLegislature
     def self.find(address, area)
       address = geocode(address, area)
       districts = find_districts(address)
-      puts districts.inspect
       senator = UtahLegislature::Senator.by_district(districts[0])
       representative = UtahLegislature::Representative.by_district(districts[1])
       to_hash(address, senator, representative)
