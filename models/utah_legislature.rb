@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'sequel'
 require 'json'
-require './utah_address'
+require_relative 'utah_address'
 
 module UtahLegislature
 
