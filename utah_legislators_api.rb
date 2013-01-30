@@ -83,7 +83,7 @@ class UtahLegislatorsAPI < Sinatra::Base
   private
   
   def error_message
-    {:error_message => env['sinatra.error'].message }
+    {:error_message => env['sinatra.error'].message}.to_json
   end
   
 end
