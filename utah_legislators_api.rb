@@ -33,7 +33,7 @@ class UtahLegislatorsAPI < Sinatra::Base
   end
   
   get %r{/senate(/)?} do
-    sens = UtahLegislature::Senator.all_districts
+    senators = UtahLegislature::Senator.all_districts
     jsonp senators.to_json
   end
   
