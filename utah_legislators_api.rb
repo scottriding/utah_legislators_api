@@ -7,6 +7,8 @@ require_relative 'models/utah_legislature'
 
 class UtahLegislatorsAPI < Sinatra::Base
 
+  helpers Sinatra::Jsonp # Adds JSONP support
+
   before do
     # Ensure access is authorized
     mickey = Bouncer.instance
