@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'sinatra/jsonp'
 require './settings'
 require_relative 'models/bouncer'
 require_relative 'models/utah_address'
@@ -15,23 +16,28 @@ class UtahLegislatorsAPI < Sinatra::Base
   ##### Basic API #####
   
   get '/house/:district' do
-    UtahLegislature::Representative.by_district(params[:district]).to_json
+    rep = UtahLegislature::Representative.by_district(params[:district])
+    JSONP rep.to_json
   end
   
   get %r{/house(/)?} do
-    UtahLegislature::Representative.all_districts.to_json
+    reps = UtahLegislature::Representative.all_districts
+    JSONP reps.to_json
   end
   
   get '/senate/:district' do
-    UtahLegislature::Senator.by_district(params[:district]).to_json
+    senator = UtahLegislature::Senator.by_district(params[:district])
+    JSONP senator.to_json
   end
   
   get %r{/senate(/)?} do
-    UtahLegislature::Senator.all_districts.to_json
+    senators = UtahLegislature::Senator.all_districts
+    JSONP senators.to_json
   end
   
   get '/representation' do
-    UtahLegislature::Representation.find(params[:address], params[:area]).to_json
+    reps = UtahLegislature::Representation.find(params[:address], params[:area])
+    JSONP reps.to_json
   end
   
   ##### Exceptional Issues #####
