@@ -19,27 +19,27 @@ class UtahLegislatorsAPI < Sinatra::Base
   
   get '/house/:district' do
     representative = UtahLegislature::Representative.by_district(params[:district])
-    jsonp representative.to_json
+    jsonp representative
   end
   
   get %r{/house(/)?} do
     representatives = UtahLegislature::Representative.all_districts
-    jsonp representatives.to_json
+    jsonp representatives
   end
   
   get '/senate/:district' do
     senator = UtahLegislature::Senator.by_district(params[:district])
-    jsonp senator.to_json
+    jsonp senator
   end
   
   get %r{/senate(/)?} do
     senators = UtahLegislature::Senator.all_districts
-    jsonp senators.to_json
+    jsonp senators
   end
   
   get '/representation' do
     legislators = UtahLegislature::Representation.find(params[:address], params[:area])
-    jsonp legislators.to_json
+    jsonp legislators
   end
   
   ##### Exceptional Issues #####
