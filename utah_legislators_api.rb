@@ -10,11 +10,11 @@ class UtahLegislatorsAPI < Sinatra::Base
   helpers Sinatra::Jsonp # Adds JSONP support
 
   before do
+    # It's JSON all the way down
+    content_type 'application/json'
     # Ensure access is authorized
     mickey = Bouncer.instance
     mickey.verify_api_key(params[:api_key])
-    # It's JSON all the way down
-    content_type 'application/json'
   end
   
   ##### Basic API #####
