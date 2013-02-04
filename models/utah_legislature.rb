@@ -57,8 +57,8 @@ module UtahLegislature
     def self.find(address, area)
       address = geocode(address, area)
       districts = find_districts(address)
-      senator = UtahLegislature::Senator.by_district(districts[0])
-      representative = UtahLegislature::Representative.by_district(districts[1])
+      senator = UtahLegislature::Senator.by_district(districts[:senate])
+      representative = UtahLegislature::Representative.by_district(districts[:house])
       to_hash(address, senator, representative)
     end
     
@@ -69,33 +69,40 @@ module UtahLegislature
     end
     
     def self.find_districts(address)
-      senate_lookup = chamber_lookup(:senate, address)
-      house_lookup = chamber_lookup(:house, address)
+      districts = chamber_lookup(address)
+      format_districts_results(districts)
+    end
     
-      # Run the two queries simultaneously for speed
-      districts = senate_lookup.union(house_lookup).all
-      
-      districts.collect do |d|
-        d[:district]
+    def self.chamber_lookup(geocodes)
+      SETTINGS[:db].fetch(
+        "SELECT district, 'senate' AS chamber
+         FROM senate_districts
+         WHERE
+           ST_Contains(
+             boundaries, 
+             ST_GeometryFromText('POINT(:longitude :latitude)', :spatial_ref)
+            )
+         UNION
+         SELECT district, 'house' AS chamber
+         FROM house_districts
+         WHERE
+           ST_Contains(
+             boundaries, 
+             ST_GeometryFromText('POINT(:longitude :latitude)', :spatial_ref)
+            )
+         ",
+        :longitude => geocodes[:longitude],
+        :latitude => geocodes[:latitude],
+        :spatial_ref => SETTINGS[:spatial_ref]
+      ).all
+    end
+    
+    def self.format_districts_results(districts)
+      result = {}
+      districts.each do |district|
+        result[district[:chamber].to_sym] = district[:district]
       end
-    end
-    
-    def self.chamber_lookup(chamber, geocodes)
-      SETTINGS[:db][chamber_to_table(chamber)].select(:district).where(
-        [
-          "ST_Contains(
-            boundaries, 
-            ST_GeometryFromText('POINT(? ?)', #{SETTINGS[:spatial_ref]})
-           )",
-          geocodes[:longitude],
-          geocodes[:latitude]
-        ]
-      )
-    end
-  
-    def self.chamber_to_table(chamber)
-      chamber_str = chamber.to_s
-      chamber_table = "#{chamber_str}_districts".to_sym
+      result
     end
     
     def self.to_hash(address, senator, representative)
