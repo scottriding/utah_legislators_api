@@ -3,7 +3,7 @@ A simple API for Utah state legislator data
 
 **Who is the senator in district 14?**
 
-_http://api.utlegislators.com/senate/14?api_key=testing
+_http://api.utlegislators.com/senate/14?api_key=testing_
 
 ```javascript
 {
