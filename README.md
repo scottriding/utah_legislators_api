@@ -119,7 +119,7 @@ _GET http://api.utlegislators.com/house/72?api_key=testing_
 
 _GET http://api.utlegislators.com/senate?api_key=testing_
 
-**Who represents me in the legislature? I live in the Governor's mansion...**
+**Who represents me in the legislature?**
 
 This call requires two parameters:
 
