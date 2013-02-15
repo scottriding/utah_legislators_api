@@ -107,7 +107,7 @@ module UtahLegislature
     
     def self.to_hash(address, senator, representative)
       representation = {
-        :address => address,
+        :geocoded_address => address,
         :senator => senator,
         :representative => representative
       }
