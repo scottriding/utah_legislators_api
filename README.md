@@ -72,7 +72,7 @@ _GET http://api.utlegislators.com/senate/14?api_key=testing_
 
 **Who is the house representative in district 72?**
 
-_GET http://api.utlegislators.com/house/14?api_key=testing_
+_GET http://api.utlegislators.com/house/72?api_key=testing_
 
 ```javascript
 {
@@ -121,7 +121,7 @@ _GET http://api.utlegislators.com/senate?api_key=testing_
 
 This call requires two parameters:
 
-1. address -- an unstructured house number and street name
+1. address -- a house number and street name
 2. area -- either a city name or a 5-digit zipcode
 
 Geocoding is generously provided by the [Utah AGRC](http://gis.utah.gov)
