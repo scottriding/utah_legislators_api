@@ -40,8 +40,8 @@ class UtahLegislatorsAPI < Sinatra::Base
   end
   
   get '/representation' do
-    legislators = UtahLegislature::Representation.find(params[:address], params[:area])
-    jsonp legislators
+    representation = UtahLegislature::Representation.find(params[:address], params[:area])
+    jsonp representation
   end
   
   ##### Exceptional Issues #####
