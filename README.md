@@ -1,10 +1,9 @@
-A simple API for learning about and connecting with Utah state legislators
-==========================================================================
+A simple API for Utah state legislator data
+============================================
 
 It's simple:
 
-Who is the senator in district 14?
-----------------------------------
+* Who is the senator in district 14?
 
 http://api.utlegislators.com/senate/14?api_key=testing
 
@@ -73,8 +72,8 @@ http://api.utlegislators.com/senate/14?api_key=testing
 }
 ```
 
-Who is the house representative in district 72?
------------------------------------------------
+* Who is the house representative in district 72?
+
 
 http://api.utlegislators.com/house/14?api_key=testing
 ```javascript
