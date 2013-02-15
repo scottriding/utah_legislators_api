@@ -1,6 +1,8 @@
 A simple API for Utah state legislator data
 ============================================
 
+It's JSON all the way down. JSONP is supported -- just add a callback parameter.
+
 **Who is the senator in district 14?**
 
 _GET http://api.utlegislators.com/senate/14?api_key=testing_
