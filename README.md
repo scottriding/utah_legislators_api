@@ -3,7 +3,7 @@ A simple API for Utah state legislator data
 
 **Who is the senator in district 14?**
 
-**GET** _http://api.utlegislators.com/senate/14?api_key=testing_
+_GET http://api.utlegislators.com/senate/14?api_key=testing_
 
 ```javascript
 {
@@ -72,51 +72,42 @@ A simple API for Utah state legislator data
 
 **Who is the house representative in district 72?**
 
-**GET** _http://api.utlegislators.com/house/14?api_key=testing_
+_GET http://api.utlegislators.com/house/14?api_key=testing_
 
 ```javascript
 {
-  "district": 14,
+  "district": 72,
   "party": "R",
-  "name": "Oda, Curtis",
-  "official_url": "http:\/\/le.utah.gov\/house2\/detail.jsp?i=ODAC",
+  "name": "Westwood, John R.",
+  "official_url": "http:\/\/le.utah.gov\/house2\/detail.jsp?i=WESTWJR",
   "chamber": "House of Representatives",
   "leadership": null,
-  "legislative_id": "ODAC",
+  "legislative_id": "WESTWJR",
   "bio": {
-    "education": "Clearfield High School; Business Administration and Economics, Utah State University; Business Management and Economics, Weber State College",
-    "profession": "Property\/Casualty Insurance Agent",
-    "legislator_since": "January 1, 2005",
-    "photo_url": "http:\/\/le.utah.gov\/images\/legislator\/odac.jpg"
+    "education": "B.S., Business Administration, Southern Utah University; Post Graduate, Pacific Coast Banking School, University of Washington",
+    "profession": "Banker",
+    "legislator_since": "January 1, 2013",
+    "photo_url": "http:\/\/le.utah.gov\/images\/legislator\/westwjr.jpg"
   },
   "contact": {
-    "address": "PO BOX 824 CLEARFIELD, UT 84089",
-    "email": "coda@le.utah.gov",
+    "address": "751 S 2075 W CEDAR CITY, UT 84720",
+    "email": "jwestwood@le.utah.gov",
     "phones": {
-      "home_phone": "801-773-9796",
-      "cell_phone": "801-725-0277"
+      "home_phone": "435-586-6961"
     }
   },
   "committees": [
     {
-      "committee_name": "Administrative Rules Review Committee",
-      "committee_url": "http:\/\/le.utah.gov\/house2\/\/asp\/interim\/Commit.asp?Com=SPEADM"
+      "committee_name": "House Political Subdivisions Committee",
+      "committee_url": "http:\/\/le.utah.gov\/house2\/\/asp\/interim\/Commit.asp?Com=HSTPOL"
     },
     {
-      "committee_name": "Executive Offices and Criminal Justice Appropriations Subcommittee",
-      "committee_url": "http:\/\/le.utah.gov\/house2\/\/asp\/interim\/Commit.asp?Com=APPEOC"
+      "committee_name": "House Public Utilities and Technology Committee",
+      "committee_url": "http:\/\/le.utah.gov\/house2\/\/asp\/interim\/Commit.asp?Com=HSTPUT"
     },
     {
-      "committee_name": "House Economic Development and Workforce Services Committee",
-      "committee_url": "http:\/\/le.utah.gov\/house2\/\/asp\/interim\/Commit.asp?Com=HSTEDW"
-    },
-    {
-      "committee_name": "House Law Enforcement and Criminal Justice Committee",
-      "committee_url": "http:\/\/le.utah.gov\/house2\/\/asp\/interim\/Commit.asp?Com=HSTLAW"
-    },
-    {
-      "committee_name": "House Rules Committee",
-      "committee_url": "http:\/\/le.utah.gov\/house2\/\/asp\/interim\/Commit.asp?Com=HSTRUL"
+      "committee_name": "Infrastructure and General Government Appropriations Subcommittee",
+      "committee_url": "http:\/\/le.utah.gov\/house2\/\/asp\/interim\/Commit.asp?Com=APPIGG"
     }
   ]
 }
@@ -124,16 +115,18 @@ A simple API for Utah state legislator data
 
 **Give me a list of all the state senators.**
 
-**GET** _http://api.utlegislators.com/senate?api_key=testing_
+_GET http://api.utlegislators.com/senate?api_key=testing_
 
 **Who represents me in the legislature? I live in the Governor's mansion...**
 
-> This call requires two parameters:
-> 1) address -- an unstructured house number and street name
-> 2) area -- either a city name or a 5-digit zipcode
-> Geocoding is generously provided by the [Utah AGRC](http://gis.utah.gov)
+This call requires two parameters:
 
-**GET** _http://api.utlegislators.com/representation?api_key=testing&address=603%20E%20South%20Temple&area=salt%20lake%20city_
+1. address -- an unstructured house number and street name
+2. area -- either a city name or a 5-digit zipcode
+
+Geocoding is generously provided by the [Utah AGRC](http://gis.utah.gov)
+
+_GET http://api.utlegislators.com/representation?api_key=testing&address=603%20E%20South%20Temple&area=salt%20lake%20city_
 
 ```javascript
 {
