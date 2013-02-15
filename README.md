@@ -3,8 +3,11 @@ A simple API for learning about and connecting with Utah state legislators
 
 It's simple:
 
-1) Who is the senator in district 14?
+Who is the senator in district 14?
+----------------------------------
+
 http://api.utlegislators.com/senate/14?api_key=testing
+
 ```javascript
 {
   "name": "Valentine, John L.",
@@ -70,7 +73,9 @@ http://api.utlegislators.com/senate/14?api_key=testing
 }
 ```
 
-2) Who is the house representative in district 72?
+Who is the house representative in district 72?
+-----------------------------------------------
+
 http://api.utlegislators.com/house/14?api_key=testing
 ```javascript
 {
