@@ -51,7 +51,11 @@ module UtahAddress
       when 404
         raise GeocodeError.new(
           'Unable to geocode address. Check city spelling or use zip code.'
-        )  
+        )
+      when 500
+        raise GeocodeError.new(
+          'There is a temporary error with the AGRC geocoding service. Please try again later.'
+        ) 
       end
     end
     
