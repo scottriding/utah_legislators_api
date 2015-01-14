@@ -1,1 +1,1 @@
-web: bundle exec thin start -R config.ru -e production -p ENV['PORT']
+web: bundle exec thin start -R config.ru -e production -p $PORT
