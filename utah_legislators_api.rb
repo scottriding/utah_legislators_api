@@ -9,9 +9,15 @@ class UtahLegislatorsAPI < Sinatra::Base
 
   helpers Sinatra::Jsonp # Adds JSONP support
 
+  # Ensure error handlers are working in development mode
+  configure :development do
+    set :raise_errors, :false
+    set :show_exceptions, :after_handler
+  end
+  
   before do
     # It's JSON all the way down
-    content_type 'application/json'
+    content_type :json
     # Ensure access is authorized
     mickey = Bouncer.instance
     mickey.verify_api_key(params[:api_key])
@@ -76,8 +82,20 @@ class UtahLegislatorsAPI < Sinatra::Base
     error_message
   end
   
+  error Sequel::DatabaseError do
+    status 503
+    {:error_message => 'Database is temporarily unavailable'}.to_json
+  end
+  
+  not_found do
+    content_type :json
+    status 404
+    {:error_message => 'This is not a supported endpoint'}.to_json
+  end
+  
   # Unanticipated errors
   error do
+    content_type :json
     status 500
     error_message
   end
@@ -87,5 +105,8 @@ class UtahLegislatorsAPI < Sinatra::Base
   def error_message
     {:error_message => env['sinatra.error'].message}.to_json
   end
+  
+  # Start a development server if run directly
+  run! if app_file == $0
   
 end
