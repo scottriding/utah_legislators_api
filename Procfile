@@ -1,1 +1,1 @@
-web: bundle exec thin start -R config.ru -e production
+web: bundle exec rackup
