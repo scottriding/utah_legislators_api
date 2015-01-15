@@ -30,7 +30,9 @@ Sequel.migration do
       representatives.insert(:district => hd['district'], :data => hd.to_json)
     end
     
-    # Load Utah Districts PostGIS data -- REQUIRES PostGIS extension installed on server
+    # Load Utah Districts PostGIS data
+    # Install the PostGIS extension
+    run 'CREATE EXTENSION IF NOT EXISTS postgis'
     gis_data_sql = File.open('scripts/data/legislative_districts.sql', 'r').read
     SETTINGS[:db] << gis_data_sql
   end
