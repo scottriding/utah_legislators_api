@@ -55,7 +55,10 @@ _bundle exec ruby scripts/db.rb --load_
 Usage
 -----
 
-It's JSON all the way down. JSONP is supported -- just add a callback parameter.
+It's JSON all the way down. Every call must include an _api_key_ parameter. 
+It doesn't matter what the key is (for now), so just make up a key for yourself.
+
+JSONP is supported -- just add a callback parameter.
 
 **Who is the senator in district 14?**
 
