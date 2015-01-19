@@ -19,8 +19,11 @@ _bundle install_
 Then there are a number of environmental variables you need to set to ensure the API points to the right places:
 
 _AGRC_API_KEY_: Sign up for a key with the [Utah AGRC](https://developer.mapserv.utah.gov/secure/KeyManagement). This excellent service handles the geocoding.
+
 _AGRC_GEOCODER_ENDPOINT_: Currently, this should be set to http://api.mapserv.utah.gov/api/v1/geocode
+
 _AGRC_REFERER_URL_: Set this to the URL where you will be hosting the API
+
 _DATABASE_URL_: Set this to the postgresql:// URL where the database is located (must have read/write permission)
 
 Once those are set in the environment, run...
@@ -38,11 +41,13 @@ _rackup_
 There are a couple of other useful scripts. If you need to update legislator data, run...
 
 _bundle exec ruby scripts/house_scraper.rb_
+
 _bundle exec ruby scripts/senate_scraper.rb_
 
 ...which will update the JSON in the /data folder. Then you'll need to run...
 
 _bundle exec ruby scripts/db.rb --drop_
+
 _bundle exec ruby scripts/db.rb --load_
 
 ...to rebuild the database with the new data.
