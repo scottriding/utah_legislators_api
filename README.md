@@ -1,10 +1,10 @@
 A simple API for Utah state legislator data
 ============================================
 
-Installation
-------------
+Installation – for those who want to host the API
+-------------------------------------------------
 
-The API is built in Ruby on the excellent Sinatra framework and uses PostgreSQL with PostGIS extensions for the backend.
+This HTTP API is built in Ruby on the excellent Sinatra framework and uses PostgreSQL with PostGIS extensions for the backend.
 
 This guides assumes you have [rbenv](https://github.com/sstephenson/rbenv) installed.
 
@@ -52,8 +52,8 @@ _bundle exec ruby scripts/db.rb --load_
 
 ...to rebuild the database with the new data.
 
-Usage
------
+Usage - For those who just want to use the API
+----------------------------------------------
 
 It's JSON all the way down. Every call must include an _api_key_ parameter. 
 It doesn't matter what the key is (for now), so just make up a key for yourself.
