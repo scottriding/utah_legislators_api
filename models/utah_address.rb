@@ -28,15 +28,19 @@ module UtahAddress
       raise AddressError.new('Missing address.') unless valid?(address)
       raise AreaError.new('Missing city or zip code.') unless valid?(area)
       
+      query_settings = {
+        :params => {
+          :apiKey => SETTINGS[:agrc_api_key],
+          :suggest => 0
+        },
+        :accept => 'application/json'
+      }
+      query_settings['referer'] = SETTINGS[:agrc_referer_url] unless SETTINGS[:agrc_referer_url].nil?
+      
       begin
         response = RestClient.get(
           "#{SETTINGS[:agrc_geocoder_endpoint]}/#{encode(address)}/#{encode(area)}",
-          :referer => SETTINGS[:agrc_referer_url],
-          :params => {
-            :apiKey => SETTINGS[:agrc_api_key],
-            :suggest => 0
-          },
-          :accept => 'application/json'
+          query_settings
         )
         JSON.parse(response.body)
       

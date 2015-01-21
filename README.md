@@ -4,8 +4,7 @@ A simple API for Utah state legislator data
 Installation – for those who want to host the API
 -------------------------------------------------
 
-This HTTP API is built in Ruby on the excellent Sinatra framework and uses PostgreSQL with PostGIS extensions for the backend.
-
+This HTTP API is built in Ruby on the [Sinatra framework](www.sinatrarb.com) and uses [PostgreSQL with PostGIS extensions](http://postgis.net/) for the backend.
 This guides assumes you have [rbenv](https://github.com/sstephenson/rbenv) installed.
 
 Clone the repository to your server then run...
@@ -18,11 +17,11 @@ _bundle install_
 
 Then there are a number of environmental variables you need to set to ensure the API points to the right places:
 
-_AGRC_API_KEY_: Sign up for a key with the [Utah AGRC](https://developer.mapserv.utah.gov/secure/KeyManagement). This excellent service handles the geocoding.
+_AGRC_API_KEY_: Sign up for a key with the [Utah AGRC](https://developer.mapserv.utah.gov/secure/KeyManagement). This excellent service provided by the State of Utah handles the geocoding.
 
 _AGRC_GEOCODER_ENDPOINT_: Currently, this should be set to http://api.mapserv.utah.gov/api/v1/geocode
 
-_AGRC_REFERER_URL_: Set this to the URL where you will be hosting the API
+_AGRC_REFERER_URL_: Only use this if you are on a shared host with a dynamic IP address. Static address hosts should procure a Desktop AGRC API Key, which makes this setting unnecessary. But for those on a dynamic IP setup, set this to the URL where you will be hosting the API.
 
 _DATABASE_URL_: Set this to the postgresql:// URL where the database is located (must have read/write permission)
 
